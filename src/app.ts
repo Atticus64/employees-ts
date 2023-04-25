@@ -1,10 +1,8 @@
-import express from "express";
+import express, { Response } from "express";
 import path from "path";
 
-import { Response } from "express";
-
-import { apiEndpoints } from "./routes/api";
 import { connectDB } from "./db/conection";
+import { apiEndpoints } from "./routes/api";
 
 // Create Express server
 
@@ -16,12 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res: Response) => {
-  res.send('Hola api employees')
-})
+	res.send("Hola api employees");
+});
 
-app.use("/api", apiEndpoints)
+app.use("/api", apiEndpoints);
 
-connectDB().then().catch(console.log)
-
+connectDB().then().catch(console.log);
 
 export default app;

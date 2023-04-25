@@ -1,7 +1,6 @@
 import app from "./app";
 
-async function main() {
-
+function main() {
   app.listen(app.get("port"), () => {
     console.log(
       "  App is running at http://localhost:%d in %s mode",
@@ -9,11 +8,9 @@ async function main() {
       app.get("env")
     );
     console.log("  Press CTRL-C to stop\n");
-  })
+  });
 }
 
 if (require.main === module) {
-  main()
-    .then()
-    .catch(console.log)
+  main();
 }
