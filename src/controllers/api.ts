@@ -21,7 +21,19 @@ const createEmployee = async (req: Request, res: Response) => {
   const { names, birthDate, hasChilds, lastnames, childs, age, salary } = req.body;
   let laborer;
   let admissionDate = new Date().toLocaleString()
-  if (hasChilds && childs > 0) {
+  if (!hasChilds && childs > 0) {
+    res.status(400).json({
+      error: 'Property hasChilds is false but youre sending childs number'
+    })
+    return
+  } else if (hasChilds && !childs || childs < 0){
+
+    res.status(400).json({
+      error: 'Property hasChilds is true but no childs in ths Employee'
+    })
+    return
+  }
+  if (childs > 0 && hasChilds) {
     laborer = new Employee({
       active: true,
       names,
