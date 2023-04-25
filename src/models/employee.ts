@@ -26,7 +26,7 @@ const EmployeeSchema = new Schema({
     type: String,
     required: true,
   },
-  admissionData: {
+  admissionDate: {
     type: String,
     default: new Date().toLocaleString(),
   },
