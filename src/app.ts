@@ -1,5 +1,6 @@
 import express, { Response } from "express";
 import path from "path";
+import cors from 'cors';
 
 import { connectDB } from "./db/conection";
 import { apiEndpoints } from "./routes/api";
@@ -8,6 +9,7 @@ import { apiEndpoints } from "./routes/api";
 
 const app = express();
 // Express configuration
+app.use(cors())
 app.set("port", process.env.PORT ?? 3000);
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
