@@ -28,7 +28,7 @@ const EmployeeSchema = new Schema({
   },
   admissionDate: {
     type: String,
-    default: new Date().toLocaleString(),
+    required: true
   },
   active: {
     type: Boolean,

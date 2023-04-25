@@ -20,11 +20,13 @@ const root = (req: Request, res: Response) => {
 const createEmployee = async (req: Request, res: Response) => {
   const { names, birthDate, hasChilds, lastnames, childs, age, salary } = req.body;
   let laborer;
+  let admissionDate = new Date().toLocaleString()
   if (hasChilds && childs > 0) {
     laborer = new Employee({
       active: true,
       names,
       lastnames,
+      admissionDate,
       age,
       hasChilds,
       childs,
@@ -37,6 +39,7 @@ const createEmployee = async (req: Request, res: Response) => {
       names,
       lastnames,
       age,
+      admissionDate,
       salary,
       birthDate,
     });
