@@ -26,7 +26,7 @@ const createEmployee = async (req: Request, res: Response) => {
       error: 'Property hasChilds is false but youre sending childs number'
     })
     return
-  } else if (hasChilds && !childs || childs <= 0){
+  } else if (hasChilds && !childs || childs < 0){
 
     res.status(400).json({
       error: 'Property hasChilds is true but no childs in ths Employee'
@@ -73,7 +73,7 @@ const updateEmployee = async (req: Request, res: Response) => {
     return
   }
 
-  if (rest.hasChilds && !rest.childs || rest.childs <= 0){
+  if (rest.hasChilds && !rest.childs || rest.childs < 0){
     res.status(400).json({
       error: 'Property hasChilds is true but no childs in ths Employee'
     })
