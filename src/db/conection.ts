@@ -12,6 +12,9 @@ declare global {
   }
 }
 
+/**
+ * Connects to Database
+ */
 export async function connectDB() {
   try {
     dotenv.config();

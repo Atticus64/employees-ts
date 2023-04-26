@@ -5,14 +5,17 @@ import app from "../src/app";
 import { Employee } from "../src/models/employee";
 
 describe("GET /api", () => {
+
   it("should return 200 OK", async () => {
     await request(app).get("/api").expect(200);
   });
+
   it("should return / array or employees", async () => {
     const data = await request(app).get("/api/employees").expect(200);
 
     assert(Array.isArray(data.body.employees));
   });
+
   it("should post create a Employee", async () => {
     const { body } = await request(app)
       .post("/api/employees")

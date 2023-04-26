@@ -1,17 +1,18 @@
-# TypeScript Express API Bootstrap (base / project starter)
+# TypeScript Express API Employees/Empleados
 
-This is a repository intended to serve as a starting point if you want to bootstrap a express API project in TypeScript.
+Necesito un sistema que me permita dar de alta Empleados, donde pueda registrar el nombre, apellidos, edad, fecha de ingreso, fecha de nacimiento, si tiene hijos y cuantos, sueldo, Activo. De esa manera podre administrar los empleados de mi organizacion. 
 
-## Features
+Validaciones:
+No se permiten empleados menores de 18 años
+El nombre, apellidos, no debe ser mayor a 100 caracteres
+La edad debe almacenar un valor numerico entre 18 y 60
+El sueldo debe almacenar un valor numerico sin decimales 
+El atributo Activo deber almacenar un bit que indique si el empleado esta activo o no en la empresa
 
-- [TypeScript](https://www.typescriptlang.org/) (v4)
-- [ts-node-dev](https://github.com/wclr/ts-node-dev)
-- [Prettier](https://prettier.io/)
-- [ESLint](https://eslint.org/) with:
-  - [Codely's config](https://github.com/lydell/eslint-plugin-simple-import-sort/) (includes ESLint's recommended rules, Prettier, Import plugin and more)
-  - [Jest plugin](https://www.npmjs.com/package/eslint-plugin-jest)
-- [Jest](https://jestjs.io) with [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
-- [GitHub Action workflows](https://github.com/features/actions) set up to run tests and linting on push
+En caso de no cumplirse las validaciones mandar al usuario un mensaje indicando el error
+
+Las validaciones deben ser superadas para crear o actualizar un empleado
+La accion "Eliminar empleado" debera desactivar al empleado y no eliminarlo de la base de datos.
 
 ## Running the app
 
@@ -31,7 +32,7 @@ npm run start
 
 ## Testing
 
-### Jest with supertest
+### Mocha with supertest
 
 ```
 npm run test
