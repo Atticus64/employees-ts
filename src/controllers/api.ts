@@ -13,7 +13,7 @@ const getEmployees = async (_req: Request, res: Response) => {
   }
 };
 
-const root = (req: Request, res: Response) => {
+const root = (_req: Request, res: Response) => {
   return res.status(200).send("data");
 };
 
@@ -23,13 +23,13 @@ const createEmployee = async (req: Request, res: Response) => {
   let admissionDate = new Date().toLocaleString()
   if (!hasChilds && childs > 0) {
     res.status(400).json({
-      error: 'Property hasChilds is false but youre sending childs number'
+      errors: [ { msg:'Property hasChilds is false but youre sending childs number' }]
     })
     return
   } else if (hasChilds && !childs || childs < 0){
 
     res.status(400).json({
-      error: 'Property hasChilds is true but no childs in ths Employee'
+      errors: [ { msg:'Property hasChilds is true but no childs in ths Employee' }]
     })
     return
   }
@@ -68,14 +68,14 @@ const updateEmployee = async (req: Request, res: Response) => {
 
   if (!rest.hasChilds && rest.childs > 0) {
     res.status(400).json({
-      error: 'Property hasChilds is false but youre sending childs number'
+      errors: [ { msg:'Property hasChilds is false but youre sending childs number' }]
     })
     return
   }
 
   if (rest.hasChilds && !rest.childs || rest.childs < 0){
     res.status(400).json({
-      error: 'Property hasChilds is true but no childs in ths Employee'
+      errors: [ { msg:'Property hasChilds is true but no childs in ths Employee' }]
     })
     return
   }
