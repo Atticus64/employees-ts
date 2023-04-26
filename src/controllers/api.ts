@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import { Employee } from "../models/employee";
+import { isValidChilds } from "../validators/childs"
 
 const getEmployees = async (_req: Request, res: Response) => {
   try {
@@ -21,18 +22,15 @@ const createEmployee = async (req: Request, res: Response) => {
   const { names, birthDate, hasChilds, lastnames, childs, age, salary } = req.body;
   let laborer;
   let admissionDate = new Date().toLocaleString()
-  if (!hasChilds && childs > 0) {
-    res.status(400).json({
-      errors: [ { msg:'Property hasChilds is false but youre sending childs number' }]
-    })
-    return
-  } else if (hasChilds && !childs || childs < 0){
 
-    res.status(400).json({
-      errors: [ { msg:'Property hasChilds is true but no childs in ths Employee' }]
-    })
-    return
-  }
+	const [errors, hasError] = isValidChilds(hasChilds, childs)
+
+	if (hasError){
+		return res.status(400).json(
+			errors
+		)
+	}
+
   if (childs > 0 && hasChilds) {
     laborer = new Employee({
       active: true,
