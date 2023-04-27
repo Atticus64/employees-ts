@@ -1,6 +1,11 @@
 import { Employee } from "../models/employee";
 
-const existsEmployeeById = async (id = "") => {
+/**
+ *
+ * @param id Id of a Employee
+ * @returns {void}
+ */
+const existsEmployeeById = async (id = ""): Promise<void> => {
 	const existUser = await Employee.findById(id);
 
 	if (!existUser) {
