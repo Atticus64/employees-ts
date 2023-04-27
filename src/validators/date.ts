@@ -10,7 +10,6 @@ const isValidDate = async (birthDate: string): Promise<void> => {
 		throw new Error('year cannot be newer than 2005')
 	}
 
-	throw new Error(`${year} is not a valid date`)
 }
 
 
