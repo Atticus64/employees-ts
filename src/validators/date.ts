@@ -1,7 +1,8 @@
 
 const isValidDate = async (birthDate: string): Promise<void> => {
 
-	const yearString = birthDate.split('/').at(0)
+	const splits = birthDate.split('/')
+	const yearString = splits[0]
 	const year = Number(yearString)
 
 	if (year < 1963) {
